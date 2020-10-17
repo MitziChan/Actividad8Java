@@ -2,18 +2,31 @@ package com.mitzitec;
 
 public class Card {
 
-    private String cara;
     private String palo;
     private String color;
-    public Card( String caraCarta, String paloCarta, String colorCarta) {
-        cara = caraCarta;
-        palo = paloCarta;
-        color = colorCarta;
+    private String valor;
 
+
+
+    Card(String palo,String color){
+        this.palo = palo;
+        this.color = color;
     }
 
-    public String toString()
-    {
-        return cara + " de " + palo + " " + color;
+
+
+    public void setValor(Integer valor) {
+        if(valor <= 10){
+            if(valor == 1) this.valor = "A"; this.valor = valor.toString();
+        }else {
+            if(valor == 11) this.valor = "J"; else if(valor == 12) this.valor = "Q";
+            else this.valor = "K";
+        }
     }
+
+    @Override
+    public String toString() { String mensaje = "%s, %s, %s";
+        return String.format(mensaje,palo,color,valor);
+    }
+
 }

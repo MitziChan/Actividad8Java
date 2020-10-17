@@ -1,63 +1,67 @@
 package com.mitzitec;
-
-
-import java.util.Random;
-
-public class Deck {
-    private Card paquete[];
-    private int cartaActual;
-    private final int NUMERO_DE_CARTAS = 52;
-    private Random numerosAleatorios;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Map;
+import java.util.HashMap;
 
 
 
-    public Deck()
-    {
+public class Deck { private HashMap<String,String> palos = new HashMap< >();
+    private ArrayList<Card> baraja = new ArrayList< >();
 
-        String caras[] = { "AS", "DOS", "TRES", "CUATRO", "CINCO", "SEIS", "SIETE",
-                "OCHO", "NUEVE", "DIEZ", "J", "Q", "K"};
-        String palos[] = { "CORAZONES", "DIAMANTES", "TREBOLES", "PICAS"};
-        String color[] = {" ROJA", " NEGRA", " ROJA", " NEGRA"};
+    public void shuffle(){ Collections.shuffle(baraja);
+    System.out.println("");
+    System.out.println("--------------------");
+        System.out.println("Se mezcló el Deck ");
+        System.out.println("--------------------"); }
 
-
-        paquete = new Card[ NUMERO_DE_CARTAS ];
-        cartaActual = 0;
-        numerosAleatorios = new Random();
-
-        for ( int cuenta = 0; cuenta < paquete.length; cuenta++ )
-            paquete[ cuenta ] = new Card( caras[cuenta % 13], palos[cuenta/13], color[cuenta/13]);
-
+    public ArrayList<Card> getJuego() {
+        return baraja;
     }
-
-
-    public void shuffle() {
-        cartaActual = 0;
-
-        for ( int primera = 0; primera < paquete.length; primera++ )
-        {
-            int segunda = numerosAleatorios.nextInt(NUMERO_DE_CARTAS);
-
-            Card temp = paquete[primera];
-
-            paquete[primera] = paquete[segunda];
-            paquete[segunda] = temp;
-
-
-
+    public void initPalos(){
+        palos.put("CORAZÓN","ROJO");
+        palos.put("DIAMANTE","ROJO");
+        palos.put("TREBOL","NEGRO");
+        palos.put("PICA","NEGRO");
+    }
+    public void init(){ for (Map.Entry<String,String> palo:palos.entrySet()){
+            for (int i=1;i <= 13;i++){
+                Card card = new Card(palo.getKey(), palo.getValue());
+                card.setValor(i);
+                baraja.add(card); }
         }
-        System.out.println("");
-        System .out.println("Se mezcló el Deck");
-        System.out.println("");
-
     }
 
+    public void head(){
+        System.out.println("Primer carta: "); var card = baraja.get(baraja.size()-1);
+        baraja.remove(card);
+        System.out.println(card.toString());
+        System.out.println("Cartas restantes: " + baraja.size());
+    }
+    public void pick(){
+        System.out.println("-------------------");
+        System.out.println("Carta aleatoria:"); var card = randomCard();
+        System.out.println(card.toString());
+        System.out.println("Cartas restantes: " + baraja.size());
+        baraja.remove(card);
+    }
+    public void hand(){
+        System.out.println("--------------------");
+        System.out.println("Cartas en mano: ");
 
-
-
-    public Card hand()
-    {
-        if (cartaActual < paquete.length )
-            return paquete[cartaActual++];
-        else return null;
+        if(baraja.size() <= 5) { for (var card:baraja){ printHand(baraja); }
+        }else { var cards = new ArrayList<Card>();
+            Card card; for (int i=1;i<=5;i++)
+            { card = randomCard();
+                baraja.remove(card);
+                cards.add(card);
+            }printHand(cards);
+            System.out.println("Cartas restantes: " + baraja.size());
+        }
+    }
+    private void printHand(ArrayList<Card> cards){ for (var card: cards) System.out.println(card.toString());
+    }
+    private Card randomCard() { var rnd = (int)Math.floor(Math.random()*(1-baraja.size()+1)+baraja.size());
+        return baraja.get(rnd);
     }
 }
