@@ -6,18 +6,26 @@ import java.util.HashMap;
 
 
 
-public class Deck { private HashMap<String,String> palos = new HashMap< >();
-    private ArrayList<Card> baraja = new ArrayList< >();
+public class Deck { private HashMap<String,String> palos = new HashMap<String, String>();
+    private ArrayList<Card> baraja = new ArrayList<Card>();
 
-    public void shuffle(){ Collections.shuffle(baraja);
-    System.out.println("");
-    System.out.println("--------------------");
-        System.out.println("Se mezcló el Deck ");
-        System.out.println("--------------------"); }
-
-    public ArrayList<Card> getJuego() {
-        return baraja;
+    public void shuffle() {
+        for (int i = 0; i < 1; i++) {
+            Collections.shuffle(baraja);
+            System.out.println("--------------------");
+            System.out.println("Se mezcló el Deck");
+            System.out.println("--------------------");
+        }
     }
+
+    public void shuffleCarta() {
+        for (int i = 0; i < 1; i++) {
+            Collections.shuffle(baraja);
+        }
+    }
+
+
+    public ArrayList<Card> getJuego() { return baraja; }
     public void initPalos(){
         palos.put("CORAZÓN","ROJO");
         palos.put("DIAMANTE","ROJO");
@@ -28,40 +36,54 @@ public class Deck { private HashMap<String,String> palos = new HashMap< >();
             for (int i=1;i <= 13;i++){
                 Card card = new Card(palo.getKey(), palo.getValue());
                 card.setValor(i);
-                baraja.add(card); }
+                baraja.add(card);
+            }
         }
     }
+
 
     public void head(){
+        System.out.println("--------------------");
         System.out.println("Primer carta: "); var card = baraja.get(baraja.size()-1);
+        System.out.println("--------------------");
         baraja.remove(card);
         System.out.println(card.toString());
-        System.out.println("Cartas restantes: " + baraja.size());
+        System.out.println("Cartas restantes " + baraja.size());
     }
     public void pick(){
-        System.out.println("-------------------");
-        System.out.println("Carta aleatoria:"); var card = randomCard();
-        System.out.println(card.toString());
-        System.out.println("Cartas restantes: " + baraja.size());
-        baraja.remove(card);
-    }
-    public void hand(){
         System.out.println("--------------------");
-        System.out.println("Cartas en mano: ");
+        System.out.println("Carta aleatoria: "); var card = randomCard();
+        System.out.println("--------------------");
+        baraja.remove(card);
+        System.out.println(card.toString());
+        System.out.println("Cartas restantes " + baraja.size());
 
-        if(baraja.size() <= 5) { for (var card:baraja){ printHand(baraja); }
-        }else { var cards = new ArrayList<Card>();
-            Card card; for (int i=1;i<=5;i++)
-            { card = randomCard();
-                baraja.remove(card);
-                cards.add(card);
-            }printHand(cards);
-            System.out.println("Cartas restantes: " + baraja.size());
+    }
+    public void hand() {
+        for (int i = 0; i < 1; i++) {
+            System.out.println("--------------------");
+            System.out.println("Cartas en mano: ");
+            System.out.println("--------------------");
+
+            if (baraja.size() <= 5) { for (var card : baraja) { printHand(baraja);
+                }
+            } else { var cards = new ArrayList<Card>();
+                Card card; for (i = 1; i <= 5; i++) {
+                    card = randomCard();
+                    baraja.remove(card);
+                    cards.add(card);
+                }
+                printHand(cards);
+                System.out.println("Cartas restantes " + baraja.size());
+            }
         }
     }
-    private void printHand(ArrayList<Card> cards){ for (var card: cards) System.out.println(card.toString());
+    private void printHand(ArrayList<Card> cards){
+        for (var card: cards) System.out.println(card.toString());
     }
-    private Card randomCard() { var rnd = (int)Math.floor(Math.random()*(1-baraja.size()+1)+baraja.size());
+
+    private Card randomCard(){ var rnd = (int)Math.floor(Math.random()*(1-baraja.size()+1)+baraja.size());
         return baraja.get(rnd);
     }
+
 }
