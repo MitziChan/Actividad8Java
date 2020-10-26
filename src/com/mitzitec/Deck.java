@@ -42,7 +42,10 @@ public class Deck { private HashMap<String,String> palos = new HashMap<String, S
     }
 
 
-    public void head(){
+    public void head() throws Exception{
+        if (baraja.isEmpty( ))
+            throw new Exception("No hay cartas");
+
         System.out.println("--------------------");
         System.out.println("Primer carta: "); var card = baraja.get(baraja.size()-1);
         System.out.println("--------------------");
@@ -50,7 +53,10 @@ public class Deck { private HashMap<String,String> palos = new HashMap<String, S
         System.out.println(card.toString());
         System.out.println("Cartas restantes " + baraja.size());
     }
-    public void pick(){
+    public void pick()throws  Exception{
+        if (baraja.isEmpty( ))
+            throw new Exception("No hay cartas");
+
         System.out.println("--------------------");
         System.out.println("Carta aleatoria: "); var card = randomCard();
         System.out.println("--------------------");
@@ -59,7 +65,10 @@ public class Deck { private HashMap<String,String> palos = new HashMap<String, S
         System.out.println("Cartas restantes " + baraja.size());
 
     }
-    public void hand() {
+    public void hand() throws Exception {
+        if (baraja.isEmpty( ))
+            throw new Exception("No hay cartas");
+
         for (int i = 0; i < 1; i++) {
             System.out.println("--------------------");
             System.out.println("Cartas en mano: ");
