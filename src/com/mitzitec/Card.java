@@ -1,6 +1,5 @@
 package com.mitzitec;
 
-
 public class Card {
 
     private String palo;
@@ -18,15 +17,18 @@ public class Card {
 
     public void setValor(Integer valor) {
         if(valor <= 10){
-            if(valor == 1) this.valor = "A"; this.valor = valor.toString();
+            if(valor == 1) this.valor = "A";
+            this.valor = valor.toString();
         }else {
-            if(valor == 11) this.valor = "J"; else if(valor == 12) this.valor = "Q";
+            if(valor == 11) this.valor = "J";
+            else if(valor == 12) this.valor = "Q";
             else this.valor = "K";
         }
     }
 
     @Override
-    public String toString() { String mensaje = "%s, %s, %s";
+    public String toString() {
+        String mensaje = "%s, %s, %s";
         return String.format(mensaje,palo,color,valor);
     }
 
