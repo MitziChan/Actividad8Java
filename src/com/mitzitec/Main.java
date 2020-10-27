@@ -30,7 +30,7 @@ public class Main {
                 miDeck.shuffle();
                 if (miDeck.baraja.isEmpty()){
 
-                    System.out.println("Ya no hay cartas en el juego");
+                    System.out.println("Se agotaron las cartas de Poker :(");
                     miDeck.jugar = false;
                 }
                 break;
@@ -38,7 +38,7 @@ public class Main {
 
                 miDeck.head();
                 if (miDeck.baraja.isEmpty()){
-                    System.out.println("Ya no hay cartas en el juego");
+                    System.out.println("Se agotaron las cartas de Poker :(");
                     miDeck.jugar = false;
                 }
                 break;
@@ -47,7 +47,7 @@ public class Main {
 
                 miDeck.pick();
                 if (miDeck.baraja.isEmpty()){
-                    System.out.println("Ya no hay cartas en el juego");
+                    System.out.println("Se agotaron las cartas de Poker :(");
                     miDeck.jugar = false;
                 }
                 break;
@@ -56,7 +56,7 @@ public class Main {
 
                 miDeck.hand();
                 if (miDeck.baraja.size() <5){
-                    System.out.println("Ya no hay cartas en el juego");
+                    System.out.println("Se agotaron las cartas de Poker :(");
                     miDeck.jugar = false;
                 }
                 break;

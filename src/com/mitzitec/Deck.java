@@ -55,7 +55,7 @@ public class Deck { private HashMap<String, String> palos = new HashMap<String, 
 
     public void head() throws Exception{
         System.out.println("");
-        if (baraja.isEmpty()) throw new Exception("Ya no hay cartas en el juego");
+        if (baraja.isEmpty()) throw new Exception("Se agotaron las cartas de Poker :( ");
         System.out.println("");
         System.out.println("");
         System.out.println("--------------------");
@@ -69,7 +69,7 @@ public class Deck { private HashMap<String, String> palos = new HashMap<String, 
 
     public void pick() throws Exception{
         System.out.println("");
-        if (baraja.isEmpty()) throw new Exception("Ya no hay cartas en el juego");
+        if (baraja.isEmpty()) throw new Exception("Se agotaron las cartas de Poker :( ");
         System.out.println("");
         System.out.println("");
         System.out.println("--------------------");
@@ -85,7 +85,7 @@ public class Deck { private HashMap<String, String> palos = new HashMap<String, 
 
     public void hand() throws Exception {
         System.out.println("");
-        if (baraja.isEmpty()) throw new Exception("Ya no hay cartas en el juego");
+        if (baraja.isEmpty()) throw new Exception("Se agotaron las cartas de Poker :( ");
         System.out.println("");
         if(baraja.size() <=5) throw new Exception("No hay tantas cartas disponibles para sacar una mano de 5");
         for (int i = 0; i < 1; i++) {
